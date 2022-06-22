@@ -4,6 +4,15 @@
 ## Dear ImGui artifacts
 imgui.ini
 
+# Directiories
+.vs/
+bin/
+bin-int/
+
+# Files
+*.user
+
+
 ## General build artifacts
 *.o
 *.obj

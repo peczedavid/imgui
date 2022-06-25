@@ -1,7 +1,8 @@
 project "ImGui"
 	kind "StaticLib"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+    staticruntime "On"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -23,13 +24,12 @@ project "ImGui"
 
 	filter "system:windows"
 		systemversion "latest"
-    cppdialect "C++17"
-    staticruntime "On"
-
+       
 		defines 
 		{ 
 			"_GLFW_WIN32",
-			"_CRT_SECURE_NO_WARNINGS"
+			"_CRT_SECURE_NO_WARNINGS",
+            "IMGUI_API=__declspec(dllexport)" 
 		}
 
 	filter "configurations:Debug"
@@ -39,8 +39,3 @@ project "ImGui"
 	filter "configurations:Release"
 		runtime "Release"
 		optimize "on"
-
-	filter "configurations:Dist"
-		runtime "Release"
-		optimize "on"
-    symbols "off"
